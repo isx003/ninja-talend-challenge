@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card my-5">
+              <div class="card-header">
+                <div class="row">
+                  <div class="col-md-10">
+                    <h5>USERS</h5>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="d-grid">
+                      <a routerLink="/users/create"
+                        class="btn btn-success btn-sm"
+                        >NEW</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body table-responsive">
+                <table class="table table-bordered">
+                    <thead class="table-secondary">
+                      <tr>
+                        <th>FIRSTNAME</th>
+                        <th>LASTNAME</th>
+                        <th>EMAIL</th>
+                        <th>BIRTH DATE</th>
+                        <th>ADDRESS</th>
+                        <th class="text-center">ACTIONS</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngIf="users.length === 0">
+                        <td colspan="6">No datat to show</td>
+                      </tr>
+                      <tr *ngFor="let user of users">
+                        <td>{{ user.firstname }}</td>
+                        <td>{{ user.lastname }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.birthDate }}</td>
+                        <td>{{ user.address.country }} - {{ user.address.city }} - {{ user.address.street }} - {{ user.address.postalCode }}</td>
+                        <td class="text-center" width="220">
+                            <a routerLink="/users/edit/{{ user.id }}" class="btn btn-warning btn-sm button-actions">EDIT</a>
+                            <button
+                                class="btn btn-danger btn-sm ms-2 button-actions"
+                                [swal]="confirmSwal"
+                                (confirm)="deleteUser(user.id)">DELETE</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                </table>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<swal
+  #confirmSwal
+  title="Are you sure to delete this user?"
+  icon="question"
+  [showCancelButton]="true"
+  [swalOptions]="{cancelButtonText: 'CANCEL', confirmButtonText: 'ACCEPT'}"
+  >
+</swal>
