@@ -1,0 +1,11 @@
+.env
+
+/backend/.env
+/backend/dist
+/backend/node_modules
+/backend/package-lock.json
+
+/frontend/package-lock.json
+/frontend/.angular/*
+/frontend/.vscode/*
+/frontend/node_modules

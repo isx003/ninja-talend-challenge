@@ -1,0 +1,6 @@
+FROM node:14
+RUN apt-get update
+RUN npm i -g @angular/cli
+RUN rm -rf app/
+RUN mkdir app/
+WORKDIR /app

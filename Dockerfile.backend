@@ -1,0 +1,5 @@
+FROM node:14
+RUN apt-get update
+RUN rm -rf app/
+RUN mkdir app/
+WORKDIR /app
